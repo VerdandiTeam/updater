@@ -6,7 +6,7 @@ CoverBackground {
         id: label
         anchors.centerIn: parent
         //text: qsTr("My Cover")
-        text: "Sailfish Updater"
+        text: "VerdandiUpdater"
     }
 
 /*    CoverActionList {
