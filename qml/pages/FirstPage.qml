@@ -1,12 +1,5 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import Sailfish.Vault 1.0
-import Sailfish.Policy 1.0
-import org.nemomobile.configuration 1.0
-import org.nemomobile.systemsettings 1.0
-import com.jolla.settings.sailfishos 1.0
-import com.jolla.settings.system 1.0 as MdmBanner
-import Nemo.Ssu 1.1
 
 Page {
     id: page
@@ -17,14 +10,35 @@ Page {
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
         anchors.fill: parent
+        Image {
+            id: banner
+            source: "/usr/share/store-client/graphics/Sailfish-OS-update-promo.jpg"
+            width: Screen.width
+            height: 0.2*Screen.height
+            fillMode: Image.PreserveAspectCrop
+            Image {
+                source: "qrc:///images/g3775.png"
+                width: 0.512*parent.width
+                height: 0.25*parent.height
+                anchors.left: parent.left
+                anchors.bottom: parent.bottom
+                fillMode: Image.PreserveAspectFit
+                anchors.leftMargin: Theme.paddingSmall
+                anchors.bottomMargin: -10
+            }
+        }
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
-        /*PullDownMenu {
+        PullDownMenu {
             MenuItem {
-                text: qsTr("Show Page 2")
-                onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
+                text: "Check for updates"
+                //text: qsTr("Show Page 2")
+                //onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
             }
-        }*/
+            MenuItem {
+                text: "Update"
+            }
+        }
 
         // Tell SilicaFlickable the height of its content.
         contentHeight: column.height
@@ -32,21 +46,19 @@ Page {
         // Place our content in a Column.  The PageHeader is always placed at the top
         // of the page, followed by our content.
         Column {
+            anchors.top: banner.bottom
             id: column
 
             width: page.width
             spacing: Theme.paddingLarge
-            PageHeader {
+            /*PageHeader {
                 title: qsTr("Hello there cunt m8")
-            }
-            /*Label {
-                x: Theme.horizontalPageMargin
+            }*/
+            Label {
+                //x: Theme.horizontalPageMargin
                 text: qsTr("Hello Sailors")
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
-            }*/
-            Image {
-                source: storeIf.osCover
             }
         }
     }

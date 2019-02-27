@@ -5,10 +5,11 @@ CoverBackground {
     Label {
         id: label
         anchors.centerIn: parent
-        text: qsTr("My Cover")
+        //text: qsTr("My Cover")
+        text: "Sailfish Updater"
     }
 
-    CoverActionList {
+/*    CoverActionList {
         id: coverAction
 
         CoverAction {
@@ -19,4 +20,5 @@ CoverBackground {
             iconSource: "image://theme/icon-cover-pause"
         }
     }
+*/
 }
