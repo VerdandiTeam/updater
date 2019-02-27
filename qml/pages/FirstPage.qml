@@ -84,16 +84,16 @@ Page {
                 text: qsTr("Vendor: " + deviceInfo.manufacturer)
             }
             Label {
-                text: qsTr("Model: " + deviceInfo.model)
+                text: qsTr("Model: " + deviceInfo.prettyName)
             }
             Label {
-                text: qsTr("OBS availability: ")
+                text: qsTr("OBS availability: " + "¯\\_(ツ)_/¯")
             }
             Label {
                 text: qsTr("Installed version: " + aboutSettings.softwareVersion)
             }
             Label {
-                text: qsTr("Latest OBS version: "+ "¯\_(ツ)_/¯")
+                text: qsTr("Latest OBS version: " + "¯\\_(ツ)_/¯")
             }
             Label {
                 text: qsTr("Created by Mister_Magister and Keijo\nbanner photo is courtesy of Jolla Oy")
