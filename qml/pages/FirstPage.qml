@@ -18,13 +18,13 @@ Page {
             fillMode: Image.PreserveAspectCrop
             Image {
                 source: "qrc:///images/g3775.png"
-                width: 0.512*parent.width
-                height: 0.25*parent.height
+                width: parent.width/2
                 anchors.left: parent.left
                 anchors.bottom: parent.bottom
                 fillMode: Image.PreserveAspectFit
+                horizontalAlignment: Image.AlignLeft
                 anchors.leftMargin: Theme.paddingSmall
-                anchors.bottomMargin: -10
+                anchors.bottomMargin: Theme.paddingSmall
             }
         }
 
