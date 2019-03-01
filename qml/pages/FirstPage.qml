@@ -18,7 +18,8 @@ Page {
         Image {
             id: banner
             source: "/usr/share/store-client/graphics/Sailfish-OS-update-promo.jpg"
-            width: Screen.width
+            anchors.left: parent.left
+            anchors.right: parent.right
             height: 0.2*Screen.height
             fillMode: Image.PreserveAspectCrop
         }
@@ -90,7 +91,7 @@ Page {
                 text: qsTr("OBS availability: " + "¯\\_(ツ)_/¯")
             }
             Label {
-                text: qsTr("Installed version: " + aboutSettings.softwareVersion)
+                text: qsTr("Installed version: " + aboutSettings.softwareVersionId)
             }
             Label {
                 text: qsTr("Latest OBS version: " + "¯\\_(ツ)_/¯")

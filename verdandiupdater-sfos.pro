@@ -14,7 +14,8 @@ TARGET = verdandiupdater-sfos
 
 CONFIG += sailfishapp
 
-SOURCES += src/verdandiupdater-sfos.cpp
+SOURCES += src/verdandiupdater-sfos.cpp \
+    src/core.cpp
 
 DISTFILES += qml/verdandiupdater-sfos.qml \
     qml/cover/CoverPage.qml \
@@ -40,3 +41,6 @@ CONFIG += sailfishapp_i18n
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
 #TRANSLATIONS += translations/verdandiupdater-sfos-de.ts
+
+HEADERS += \
+    src/core.h
