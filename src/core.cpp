@@ -13,7 +13,7 @@ int Core::version()
 void Core::setVersion(int version)
 {
     _version = version;
-    emit versionChaned(version);
+    emit versionChanged(_version);
 }
 
 void Core::makeUpdate()

@@ -17,12 +17,12 @@ public:
 
 
 signals:
-    void versionChaned(int version);
+    void versionChanged(int version);
 
 public slots:
 
 private:
-    int _version = null;
+    int _version = -1;
 };
 
 #endif // CORE_H
