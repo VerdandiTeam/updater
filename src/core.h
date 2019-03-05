@@ -22,7 +22,7 @@ signals:
 public slots:
 
 private:
-    int _version = null;
+    int _version = -1;
 };
 
 #endif // CORE_H
