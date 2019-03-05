@@ -4,6 +4,7 @@
 
 #include <sailfishapp.h>
 #include "core.h"
+#include "checker.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,8 +12,10 @@ int main(int argc, char *argv[])
     QSharedPointer<QQuickView> view(SailfishApp::createView());
 
     Core core;
+    checker checker;
 
     view->rootContext()->setContextProperty("core", &core);
+    view->rootContext()->setContextProperty("checker", &checker);
 
     view->setSource(SailfishApp::pathTo("qml/verdandiupdater-sfos.qml"));
     view->show();

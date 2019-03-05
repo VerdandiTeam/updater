@@ -2,6 +2,9 @@
 #define CORE_H
 
 #include <QObject>
+#include <string>
+
+using std::string;
 
 class Core : public QObject
 {
@@ -10,19 +13,19 @@ class Core : public QObject
 public:
     explicit Core(QObject *parent = nullptr);
 
-    int version();
+    string version();
     void setVersion(int version);
 
     Q_INVOKABLE void makeUpdate();
 
 
 signals:
-    void versionChaned(int version);
+    void versionChanged(int version);
 
 public slots:
 
 private:
-    int _version = -1;
+    string _version = "-1";
 };
 
 #endif // CORE_H

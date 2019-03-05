@@ -5,7 +5,7 @@ Core::Core(QObject *parent) : QObject(parent)
 
 }
 
-int Core::version()
+string Core::version()
 {
     return _version;
 }
@@ -13,7 +13,7 @@ int Core::version()
 void Core::setVersion(int version)
 {
     _version = version;
-    emit versionChanged(_version);
+    emit versionChanged(version);
 }
 
 void Core::makeUpdate()
