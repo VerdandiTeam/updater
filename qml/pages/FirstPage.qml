@@ -91,7 +91,7 @@ Page {
                 text: qsTr("OBS availability: " + "¯\\_(ツ)_/¯")
             }
             Label {
-                text: qsTr("Installed version: " + aboutSettings.softwareVersionId)
+                text: qsTr("Installed version: " + core.version)
             }
             Label {
                 text: qsTr("Latest OBS version: " + "¯\\_(ツ)_/¯")

@@ -11,7 +11,9 @@ public:
     explicit Core(QObject *parent = nullptr);
 
     int version();
-    void serVersion(int version);
+    void setVersion(int version);
+
+    Q_INVOKABLE void makeUpdate();
 
 
 signals:
