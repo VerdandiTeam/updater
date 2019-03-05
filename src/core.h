@@ -25,7 +25,11 @@ signals:
 public slots:
 
 private:
+<<<<<<< HEAD
     string _version = "-1";
+=======
+    int _version = -1;
+>>>>>>> 6f6ce028af3727798ef329d1d914d0c189aeb372
 };
 
 #endif // CORE_H
