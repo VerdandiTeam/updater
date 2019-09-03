@@ -9,6 +9,12 @@ Page {
     DeviceInfo { id: deviceInfo }
     AboutSettings { id: aboutSettings }
 
+    Component.onCompleted: {
+        core.version = aboutSettings.softwareVersionId
+        apiHelper.endPoint = "http://verdanditeam.com/api/device/" + deviceInfo.model
+        console.log(apiHelper.endPoint)
+    }
+
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
 

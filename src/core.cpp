@@ -5,12 +5,12 @@ Core::Core(QObject *parent) : QObject(parent)
 
 }
 
-string Core::version()
+QString Core::version()
 {
     return _version;
 }
 
-void Core::setVersion(int version)
+void Core::setVersion(QString version)
 {
     _version = version;
 

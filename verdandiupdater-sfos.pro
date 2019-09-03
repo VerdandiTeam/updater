@@ -15,6 +15,7 @@ TARGET = verdandiupdater-sfos
 CONFIG += sailfishapp
 
 SOURCES += src/verdandiupdater-sfos.cpp \
+    src/apihelper.cpp \
     src/core.cpp \
     src/checker.cpp
 
@@ -44,5 +45,9 @@ CONFIG += sailfishapp_i18n
 #TRANSLATIONS += translations/verdandiupdater-sfos-de.ts
 
 HEADERS += \
+    src/apihelper.h \
     src/core.h \
     src/checker.h
+
+INCLUDEPATH += vendor/curlpp/include \
+    vendor/jsoncpp/include

@@ -5,12 +5,12 @@ checker::checker(QObject *parent) : QObject(parent)
 
 }
 
-void checker::setCurrentVersion(string version)
+void checker::setCurrentVersion(QString version)
 {
     currentVersion = version;
 }
 
-void checker::setNewVersion(string version)
+void checker::setNewVersion(QString version)
 {
     newVersion = version;
     emit newVersionChanged(version);
@@ -22,7 +22,7 @@ void checker::setUpdateAvailable(bool update)
     emit updateAvailableChanged(update);
 }
 
-string checker::getNewVersion()
+QString checker::getNewVersion()
 {
     return newVersion;
 }
