@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
     view->rootContext()->setContextProperty("core", &core);
     view->rootContext()->setContextProperty("checker", &checker);
-    view->rootContext()->setContextProperty("apiHelper", &apiHelper);
+//    view->rootContext()->setContextProperty("apiHelper", &apiHelper);
 
     view->setSource(SailfishApp::pathTo("qml/verdandiupdater-sfos.qml"));
     view->show();

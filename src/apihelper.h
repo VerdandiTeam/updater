@@ -7,11 +7,11 @@
 #include <curlpp/Option.hpp>
 #include <json/json.h>
 
-class APIHelper : public QObject
+class APIHelper
 {
     Q_OBJECT
 public:
-    explicit APIHelper(QObject *parent = nullptr);
+    explicit APIHelper();
     void setUrl(QString url);
     void perform();
     void reset();

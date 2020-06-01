@@ -6,7 +6,7 @@
 }*/
 
 APIHelper::APIHelper() {
-    request.setOpt(cURLpp::Options::WriteStream(&result));
+    request.setOpt(curlpp::options::WriteStream(&result));
     request.setOpt<curlpp::options::SslVerifyPeer>(false);
 }
 
