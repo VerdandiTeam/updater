@@ -2,14 +2,14 @@
 #define APIHELPER_H
 
 #include <QObject>
+#include <QString>
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
-#include <curlpp/Option.hpp>
+#include <curlpp/Options.hpp>
 #include <json/json.h>
 
 class APIHelper
 {
-    Q_OBJECT
 public:
     explicit APIHelper();
     void setUrl(QString url);

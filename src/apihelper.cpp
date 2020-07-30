@@ -1,4 +1,5 @@
 #include "apihelper.h"
+#include <iomanip>
 
 /*APIHelper::APIHelper(QObject *parent) : QObject(parent)
 {
@@ -11,7 +12,7 @@ APIHelper::APIHelper() {
 }
 
 void APIHelper::setUrl(QString url) {
-    request.setOpt<curlpp::options::Url>(QString::toStdString(url));
+    request.setOpt<curlpp::options::Url>(url.toStdString());
 }
 
 void APIHelper::perform() {
@@ -52,7 +53,7 @@ Json::Value APIHelper::getResultsAsJson() {
 void APIHelper::reset() {
     request.reset();
     result.str("");
-    request.setOpt(cURLpp::Options::WriteStream(&result));
+    request.setOpt(curlpp::options::WriteStream(&result));
 }
 
 std::string APIHelper::url_encode(const std::string &value) {

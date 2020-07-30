@@ -14,22 +14,12 @@ TARGET = verdandiupdater-sfos
 
 CONFIG += sailfishapp
 
+LIBS += -lcurl -ljsoncpp -lcurlpp
+
 SOURCES += src/verdandiupdater-sfos.cpp \
     src/apihelper.cpp \
     src/core.cpp \
-    src/checker.cpp \
-    vendor/curlpp/src/curlpp/cURLpp.cpp \
-    vendor/curlpp/src/curlpp/Easy.cpp \
-    vendor/curlpp/src/curlpp/Exception.cpp \
-    vendor/curlpp/src/curlpp/Form.cpp \
-    vendor/curlpp/src/curlpp/Info.cpp \
-    vendor/curlpp/src/curlpp/Multi.cpp \
-    vendor/curlpp/src/curlpp/OptionBase.cpp \
-    vendor/curlpp/src/curlpp/Options.cpp \
-    vendor/curlpp/src/curlpp/internal/CurlHandle.cpp \
-    vendor/curlpp/src/curlpp/internal/OptionList.cpp \
-    vendor/curlpp/src/curlpp/internal/OptionSetter.cpp \
-    vendor/curlpp/src/curlpp/internal/SList.cpp
+    src/checker.cpp
 
 DISTFILES += qml/verdandiupdater-sfos.qml \
     qml/cover/CoverPage.qml \
@@ -59,24 +49,4 @@ CONFIG += sailfishapp_i18n
 HEADERS += \
     src/apihelper.h \
     src/core.h \
-    src/checker.h \
-    vendor/curlpp/include/curlpp/cURLpp.hpp \
-    vendor/curlpp/include/curlpp/Easy.hpp \
-    vendor/curlpp/include/curlpp/Exception.hpp \
-    vendor/curlpp/include/curlpp/Form.hpp \
-    vendor/curlpp/include/curlpp/Info.hpp \
-    vendor/curlpp/include/curlpp/Infos.hpp \
-    vendor/curlpp/include/curlpp/Multi.hpp \
-    vendor/curlpp/include/curlpp/OptionBase.hpp \
-    vendor/curlpp/include/curlpp/Option.hpp \
-    vendor/curlpp/include/curlpp/Options.hpp \
-    vendor/curlpp/include/curlpp/Types.hpp \
-    vendor/curlpp/include/curlpp/internal/CurlHandle.hpp \
-    vendor/curlpp/include/curlpp/internal/OptionContainer.hpp \
-    vendor/curlpp/include/curlpp/internal/OptionContainerType.hpp \
-    vendor/curlpp/include/curlpp/internal/OptionList.hpp \
-    vendor/curlpp/include/curlpp/internal/OptionSetter.hpp \
-    vendor/curlpp/include/curlpp/internal/SList.hpp
-
-INCLUDEPATH += vendor/curlpp/include \
-    vendor/jsoncpp/include
+    src/checker.h
