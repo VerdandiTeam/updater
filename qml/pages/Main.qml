@@ -2,7 +2,6 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import org.nemomobile.systemsettings 1.0
 
-
 Page {
     id: page
 
@@ -12,8 +11,6 @@ Page {
     property bool otaAvaliable: false
 
     Component.onCompleted: {
-        //core.version = aboutSettings.softwareVersionId
-
         var data = JSON.parse('{"sfos_version":"4.6.0.13","has_ota":true,"has_logo":false}')
 
         core.version = data.sfos_version
@@ -27,13 +24,11 @@ Page {
         doc.onreadystatechange = function() {
             if (doc.readyState === XMLHttpRequest.DONE) {
                 if (doc.status === 200) {
-                    console.log("ok")
                     var data = JSON.parse(doc.responseText)
 
                     core.version = data.sfos_version
                     page.otaAvaliable = data.has_ota
                 } else {
-                    console.log("not ok")
                     core.version = qsTr("Not available")
 
                     page.otaAvaliable = false
@@ -45,12 +40,12 @@ Page {
         doc.send()
     }
 
-    // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
 
-    // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
         anchors.fill: parent
+        contentHeight: column.height
+
         Image {
             id: banner
             source: "/usr/share/store-client/graphics/Sailfish-OS-update-promo.jpg"
@@ -89,7 +84,6 @@ Page {
             anchors.bottomMargin: Theme.paddingSmall
         }
 
-        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             MenuItem {
                 text: "Check for updates"
@@ -101,11 +95,6 @@ Page {
             }
         }
 
-        // Tell SilicaFlickable the height of its content.
-        contentHeight: column.height
-
-        // Place our content in a Column.  The PageHeader is always placed at the top
-        // of the page, followed by our content.
         Column {
             anchors.top: banner.bottom
             anchors.topMargin: Theme.paddingLarge*1.25
@@ -119,18 +108,23 @@ Page {
             Label {
                 text: qsTr("Vendor: %1").arg(deviceInfo.manufacturer)
             }
+
             Label {
                 text: qsTr("Model: %1").arg(deviceInfo.prettyName)
             }
+
             Label {
                 text: qsTr("OBS availability: %1").arg(page.otaAvaliable ? qsTr("Available") : qsTr("Not available"))
             }
+
             Label {
                 text: qsTr("Installed version: %1").arg(aboutSettings.softwareVersionId)
             }
+
             Label {
                 text: qsTr("Latest OBS version: %1").arg(page.otaAvaliable ? core.version : qsTr("Not available"))
             }
+
             Label {
                 text: qsTr("Created by Mister_Magister and Keijo\nbanner photo is courtesy of Jolla Oy")
                 font.pixelSize: Theme.fontSizeTiny
