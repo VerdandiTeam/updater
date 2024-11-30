@@ -9,6 +9,7 @@ Page {
     AboutSettings { id: aboutSettings }
 
     property bool otaAvaliable: false
+    property bool updateAvailable: false
 
     Component.onCompleted: {
         var data = JSON.parse('{"sfos_version":"4.6.0.13","has_ota":true,"has_logo":false}')
@@ -28,6 +29,9 @@ Page {
 
                     core.version = data.sfos_version
                     page.otaAvaliable = data.has_ota
+                    if(page.otaAvaliable) {
+                        page.updateAvailable = compareVersions()
+                    }
                 } else {
                     core.version = qsTr("Not available")
 
@@ -38,6 +42,19 @@ Page {
 
         doc.open("GET", "http://verdanditeam.com/api/device/" + deviceInfo.model)
         doc.send()
+    }
+
+    function compareVersions() {
+        var current = aboutSettings.softwareVersionId.split('.')
+        var future = core.version.split('.')
+
+        for(var i = 0; i < current.length; i++) {
+            if(future[i] > current[i]) {
+                return true
+            }
+        }
+
+        return false
     }
 
     allowedOrientations: Orientation.All
@@ -91,7 +108,7 @@ Page {
             }
             MenuItem {
                 text: "Update"
-                enabled: false
+                enabled: page.updateAvailable
             }
         }
 
