@@ -9,8 +9,40 @@ Page {
     DeviceInfo { id: deviceInfo }
     AboutSettings { id: aboutSettings }
 
+    property bool otaAvaliable: false
+
     Component.onCompleted: {
-        core.version = aboutSettings.softwareVersionId
+        //core.version = aboutSettings.softwareVersionId
+
+        var data = JSON.parse('{"sfos_version":"4.6.0.13","has_ota":true,"has_logo":false}')
+
+        core.version = data.sfos_version
+
+        getVersion()
+    }
+
+    function getVersion() {
+        var doc = new XMLHttpRequest();
+
+        doc.onreadystatechange = function() {
+            if (doc.readyState === XMLHttpRequest.DONE) {
+                if (doc.status === 200) {
+                    console.log("ok")
+                    var data = JSON.parse(doc.responseText)
+
+                    core.version = data.sfos_version
+                    page.otaAvaliable = data.has_ota
+                } else {
+                    console.log("not ok")
+                    core.version = qsTr("Not available")
+
+                    page.otaAvaliable = false
+                }
+            }
+        }
+
+        doc.open("GET", "http://verdanditeam.com/api/device/" + deviceInfo.model)
+        doc.send()
     }
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
@@ -61,8 +93,7 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: "Check for updates"
-                //text: qsTr("Show Page 2")
-                //onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
+                onClicked: getVersion()
             }
             MenuItem {
                 text: "Update"
@@ -86,19 +117,19 @@ Page {
             spacing: Theme.paddingLarge
 
             Label {
-                text: qsTr("Vendor: " + deviceInfo.manufacturer)
+                text: qsTr("Vendor: %1").arg(deviceInfo.manufacturer)
             }
             Label {
-                text: qsTr("Model: " + deviceInfo.prettyName)
+                text: qsTr("Model: %1").arg(deviceInfo.prettyName)
             }
             Label {
-                text: qsTr("OBS availability: " + "¯\\_(ツ)_/¯")
+                text: qsTr("OBS availability: %1").arg(page.otaAvaliable ? qsTr("Available") : qsTr("Not available"))
             }
             Label {
-                text: qsTr("Installed version: " + core.version)
+                text: qsTr("Installed version: %1").arg(aboutSettings.softwareVersionId)
             }
             Label {
-                text: qsTr("Latest OBS version: " + "¯\\_(ツ)_/¯")
+                text: qsTr("Latest OBS version: %1").arg(page.otaAvaliable ? core.version : qsTr("Not available"))
             }
             Label {
                 text: qsTr("Created by Mister_Magister and Keijo\nbanner photo is courtesy of Jolla Oy")

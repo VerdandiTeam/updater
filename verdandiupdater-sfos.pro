@@ -3,8 +3,7 @@ TARGET = verdandiupdater-sfos
 CONFIG += sailfishapp
 
 SOURCES += src/verdandiupdater-sfos.cpp \
-    src/core.cpp \
-    src/checker.cpp
+    src/core.cpp
 
 DISTFILES += qml/verdandiupdater-sfos.qml \
     qml/cover/CoverPage.qml \
@@ -20,5 +19,4 @@ RESOURCES += qml/resources/resources.qrc
 CONFIG += sailfishapp_i18n
 
 HEADERS += \
-    src/core.h \
-    src/checker.h
+    src/core.h
