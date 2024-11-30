@@ -37,8 +37,9 @@ desktop-file-install --delete-original       \
    %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
+%defattr(4755,root,root,4755)
+%{_bindir}/%{name}
 %defattr(-,root,root,-)
-%{_bindir}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
