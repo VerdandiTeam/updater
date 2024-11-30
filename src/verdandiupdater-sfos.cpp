@@ -5,7 +5,6 @@
 #include <sailfishapp.h>
 #include "core.h"
 #include "checker.h"
-#include "apihelper.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,7 +13,6 @@ int main(int argc, char *argv[])
 
     Core core;
     checker checker;
-    APIHelper apiHelper;
 
     view->rootContext()->setContextProperty("core", &core);
     view->rootContext()->setContextProperty("checker", &checker);

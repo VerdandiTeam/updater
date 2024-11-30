@@ -2,7 +2,6 @@
 #define CHECKER_H
 
 #include <QObject>
-#include "apihelper.h"
 #include <QString>
 #include <iomanip>
 
