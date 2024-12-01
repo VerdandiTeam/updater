@@ -4,6 +4,7 @@
 #include "updateworker.h"
 
 #include <QObject>
+#include <QProcess>
 #include <QThread>
 
 class Core : public QObject
@@ -23,11 +24,16 @@ signals:
     void versionChanged(QString version);
 
 public slots:
+    void onSsuChange(int exitCode);
 
 private:
     QString _version = "-1";
     QThread _workerThread;
     UpdateWorker _updateWorker;
+    QProcess _ssuReleaseProcess;
+    QProcess _zypperClean;
+    QProcess _zypperRefresh;
+    QProcess _versionUpgrade;
 };
 
 #endif // CORE_H

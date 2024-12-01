@@ -1,4 +1,5 @@
 #include "core.h"
+#include <QDebug>
 
 Core::Core(QObject *parent) : QObject(parent)
 {
@@ -6,6 +7,8 @@ Core::Core(QObject *parent) : QObject(parent)
 
     connect(&_workerThread, &QThread::started, &_updateWorker, &UpdateWorker::update);
     connect(&_updateWorker, &UpdateWorker::finished, &_workerThread, &QThread::quit);
+
+    connect(&_ssuReleaseProcess, static_cast<void (QProcess::*)(int)>(&QProcess::finished), this, &Core::onSsuChange);
 }
 
 QString Core::version()
@@ -22,5 +25,15 @@ void Core::setVersion(QString version)
 
 void Core::makeUpdate()
 {
-    _workerThread.start();
+    QStringList params;
+    params << "re";
+    params << _version;
+    _ssuReleaseProcess.start("/usr/bin/ssu", params, QIODevice::OpenModeFlag::ReadWrite);
+}
+
+void Core::onSsuChange(int exitCode)
+{
+    if (exitCode != 0) {
+        qDebug() << "Okurwa japierdoleeeee";
+    }
 }
