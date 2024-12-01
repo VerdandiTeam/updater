@@ -4,3 +4,6 @@ X-Nemo-Application-Type=silica-qt5
 Icon=verdandiupdater-sfos
 Exec=verdandiupdater-sfos
 Name=verdandiupdater-sfos
+
+[X-Sailjail]
+Sandboxing=Disabled

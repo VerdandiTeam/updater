@@ -22,9 +22,17 @@ public:
 
 signals:
     void versionChanged(QString version);
+    void ssuFailed();
+    void zypperCleanFailed();
+    void zypperRefreshFailed();
+    void upgradeFailed();
+    void upgradeFinished();
 
 public slots:
     void onSsuChange(int exitCode);
+    void onZypperCleaned(int exitCode);
+    void onZypperRefreshed(int exitCode);
+    void onUpgradeFinished(int exitCode);
 
 private:
     QString _version = "-1";

@@ -109,6 +109,7 @@ Page {
             MenuItem {
                 text: "Update"
                 enabled: page.updateAvailable
+                onClicked: core.makeUpdate()
             }
         }
 
@@ -131,7 +132,7 @@ Page {
             }
 
             Label {
-                text: qsTr("OBS availability: %1").arg(page.otaAvaliable ? qsTr("Available") : qsTr("Not available"))
+                text: qsTr("OTA availability: %1").arg(page.otaAvaliable ? qsTr("Available") : qsTr("Not available"))
             }
 
             Label {
@@ -139,7 +140,7 @@ Page {
             }
 
             Label {
-                text: qsTr("Latest OBS version: %1").arg(page.otaAvaliable ? core.version : qsTr("Not available"))
+                text: qsTr("Latest version: %1").arg(page.otaAvaliable ? core.version : qsTr("Not available"))
             }
 
             Label {
