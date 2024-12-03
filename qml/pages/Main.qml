@@ -110,7 +110,7 @@ Page {
             MenuItem {
                 text: "Update"
                 //enabled: page.updateAvailable
-                onClicked: core.makeUpdate()
+                onClicked: pageStack.push(Qt.resolvedUrl("Update.qml"))
             }
         }
 

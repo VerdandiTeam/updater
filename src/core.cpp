@@ -28,6 +28,7 @@ void Core::setVersion(QString version)
 
 void Core::makeUpdate()
 {
+    qDebug() << "HELLOOOOOOOO CHEEKY BREEKI IV DAMKE";
     QStringList params;
     params << "re";
     params << _version;

@@ -21,10 +21,6 @@ banner photo is courtesy of Jolla Oy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>OBS availability: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Available</source>
         <translation type="unfinished"></translation>
     </message>
@@ -33,7 +29,18 @@ banner photo is courtesy of Jolla Oy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Latest OBS version: %1</source>
+        <source>OTA availability: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latest version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Update</name>
+    <message>
+        <source>Current step: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

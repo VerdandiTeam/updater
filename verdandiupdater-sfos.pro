@@ -9,6 +9,7 @@ SOURCES += src/verdandiupdater-sfos.cpp \
 DISTFILES += qml/verdandiupdater-sfos.qml \
     qml/cover/CoverPage.qml \
     qml/pages/Main.qml \
+    qml/pages/Update.qml \
     rpm/verdandiupdater-sfos.spec \
     translations/*.ts \
     verdandiupdater-sfos.desktop
