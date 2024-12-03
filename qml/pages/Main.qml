@@ -14,7 +14,8 @@ Page {
     Component.onCompleted: {
         var data = JSON.parse('{"sfos_version":"4.6.0.13","has_ota":true,"has_logo":false}')
 
-        core.version = data.sfos_version
+        //core.version = data.sfos_version
+        core.version = aboutSettings.softwareVersionId
 
         getVersion()
     }
@@ -108,7 +109,7 @@ Page {
             }
             MenuItem {
                 text: "Update"
-                enabled: page.updateAvailable
+                //enabled: page.updateAvailable
                 onClicked: core.makeUpdate()
             }
         }
