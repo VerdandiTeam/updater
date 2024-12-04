@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import org.nemomobile.systemsettings 1.0
 import Nemo.KeepAlive 1.2
+import Nemo.DBus 2.0
 
 Page {
     id: page
@@ -12,6 +13,21 @@ Page {
 
     DisplayBlanking {
         preventBlanking: true
+    }
+
+    DBusAdaptor {
+        id: shareDBusInterface
+        service: "com.verdanditeam.updater"
+        path: "/"
+        iface: "com.verdanditeam.updater"
+        xml: '<interface name="com.verdanditeam.updter">
+                  <method name="update"> <arg type="s" name="version" direction="in"/> </method>
+              </interface>'
+
+        function update(version) {
+            core.version = version
+            core.makeUpdate()
+        }
     }
 
     backNavigation: updateFailed
@@ -43,8 +59,6 @@ Page {
             progressOutput.focus = true
         }
     }
-
-    Component.onCompleted: core.makeUpdate()
 
     SilicaFlickable {
         anchors.fill: parent

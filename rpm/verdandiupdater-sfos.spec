@@ -32,14 +32,12 @@ Short description of my Sailfish OS Application
 rm -rf %{buildroot}
 %qmake5_install
 
-desktop-file-install --delete-original       \
-  --dir %{buildroot}%{_datadir}/applications             \
-   %{buildroot}%{_datadir}/applications/*.desktop
-
 %files
 %defattr(4755,root,root,4755)
 %{_bindir}/%{name}
 %defattr(-,root,root,-)
 %{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/jolla-settings/entries/
+%{_datadir}/jolla-settings/pages/verdandiupdater/
+%{_datadir}/translations
+%{_datadir}/dbus-1/services/com.verdanditeam.updater.service

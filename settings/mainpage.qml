@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import org.nemomobile.systemsettings 1.0
+import Nemo.DBus 2.0
 
 Page {
     id: page
@@ -10,9 +11,18 @@ Page {
 
     property bool otaAvaliable: false
     property bool updateAvailable: false
+    property string updateVersion: ""
 
     Component.onCompleted: {
         getVersion()
+    }
+
+    DBusInterface {
+        id: dbusInterface
+
+        service: 'com.verdanditeam.updater'
+        path: '/'
+        iface: 'com.verdanditeam.updater'
     }
 
     function getVersion() {
@@ -23,13 +33,13 @@ Page {
                 if (doc.status === 200) {
                     var data = JSON.parse(doc.responseText)
 
-                    core.version = data.sfos_version
+                    page.updateVersion = data.sfos_version
                     page.otaAvaliable = data.has_ota
                     if(page.otaAvaliable) {
                         page.updateAvailable = compareVersions()
                     }
                 } else {
-                    core.version = qsTr("Not available")
+                    page.updateVersion = qsTrId("verdandiupdater-not-available")
 
                     page.otaAvaliable = false
                 }
@@ -42,7 +52,7 @@ Page {
 
     function compareVersions() {
         var current = aboutSettings.softwareVersionId.split('.')
-        var future = core.version.split('.')
+        var future = page.updateVersion.split('.')
 
         for(var i = 0; i < current.length; i++) {
             if(future[i] > current[i]) {
@@ -86,7 +96,7 @@ Page {
 
         Image {
             id: logo
-            source: "qrc:///images/g3775.png"
+            source: "/usr/share/verdandiupdater-sfos/qml/resources/images/g3775.png"
             width: banner.width/2
             anchors.left: logoBG.left
             anchors.bottom: logoBG.bottom
@@ -99,13 +109,13 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: "Check for updates"
+                text: qsTrId("verdandiupdater-check-for-updates")
                 onClicked: getVersion()
             }
             MenuItem {
-                text: "Update"
+                text: qsTrId("verdandiupdater-update")
                 enabled: page.updateAvailable
-                onClicked: pageStack.push(Qt.resolvedUrl("Update.qml"))
+                onClicked: dbusInterface.call('update', [page.updateVersion])
             }
         }
 
@@ -120,27 +130,27 @@ Page {
             spacing: Theme.paddingLarge
 
             Label {
-                text: qsTr("Vendor: %1").arg(deviceInfo.manufacturer)
+                text: qsTrId("verdandiupdater-vendor").arg(deviceInfo.manufacturer)
             }
 
             Label {
-                text: qsTr("Model: %1").arg(deviceInfo.prettyName)
+                text: qsTrId("verdandiupdater-model").arg(deviceInfo.prettyName)
             }
 
             Label {
-                text: qsTr("OTA availability: %1").arg(page.otaAvaliable ? qsTr("Available") : qsTr("Not available"))
+                text: qsTrId("verdandiupdater-ota-availability").arg(page.otaAvaliable ? qsTrId("verdandiupdater-available") : qsTrId("verdandiupdater-not-available"))
             }
 
             Label {
-                text: qsTr("Installed version: %1").arg(aboutSettings.softwareVersionId)
+                text: qsTrId("verdandiupdater-installed-version").arg(aboutSettings.softwareVersionId)
             }
 
             Label {
-                text: qsTr("Latest version: %1").arg(page.otaAvaliable ? core.version : qsTr("Not available"))
+                text: qsTrId("verdandiupdater-latest-version").arg(page.otaAvaliable ? page.updateVersion : qsTrId("verdandiupdater-not-available"))
             }
 
             Label {
-                text: qsTr("Created by Mister_Magister and Keijo\nbanner photo is courtesy of Jollyboys.")
+                text: qsTrId("verdandiupdater-credits")
                 font.pixelSize: Theme.fontSizeTiny
             }
         }

@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Icon=verdandiupdater-sfos
-Exec=verdandiupdater-sfos
-Name=verdandiupdater-sfos
-
-[X-Sailjail]
-Sandboxing=Disabled

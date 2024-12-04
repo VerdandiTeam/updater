@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.verdanditeam.updater
+Exec=/usr/bin/verdandiupdater-sfos
