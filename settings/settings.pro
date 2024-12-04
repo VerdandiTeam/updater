@@ -9,7 +9,6 @@ pages.files = mainpage.qml
 translations.path = /usr/share/translations
 translations.files = i18n/*.qm
 
-system(lupdate . -ts $$PWD/i18n/verdandiupdater-settings-en.ts)
 system(lrelease -idbased $$PWD/i18n/*.ts)
 
 OTHER_FILES += \
