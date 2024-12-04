@@ -12,11 +12,6 @@ Page {
     property bool updateAvailable: false
 
     Component.onCompleted: {
-        var data = JSON.parse('{"sfos_version":"4.6.0.13","has_ota":true,"has_logo":false}')
-
-        //core.version = data.sfos_version
-        core.version = aboutSettings.softwareVersionId
-
         getVersion()
     }
 
@@ -109,7 +104,7 @@ Page {
             }
             MenuItem {
                 text: "Update"
-                //enabled: page.updateAvailable
+                enabled: page.updateAvailable
                 onClicked: pageStack.push(Qt.resolvedUrl("Update.qml"))
             }
         }
@@ -145,7 +140,7 @@ Page {
             }
 
             Label {
-                text: qsTr("Created by Mister_Magister and Keijo\nbanner photo is courtesy of Jolla Oy")
+                text: qsTr("Created by Mister_Magister and Keijo\nbanner photo is courtesy of Jollyboys.")
                 font.pixelSize: Theme.fontSizeTiny
             }
         }

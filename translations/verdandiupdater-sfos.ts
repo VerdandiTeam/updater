@@ -2,12 +2,34 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>Main</name>
+    <name>Core</name>
     <message>
-        <source>Created by Mister_Magister and Keijo
-banner photo is courtesy of Jolla Oy</source>
+        <source>Beginning update</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Setting ssu release</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cleaning zypper repos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refreshing zypper repos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Upgrading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finished, reboot now!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Main</name>
     <message>
         <source>Not available</source>
         <translation type="unfinished"></translation>
@@ -36,11 +58,16 @@ banner photo is courtesy of Jolla Oy</source>
         <source>Latest version: %1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Created by Mister_Magister and Keijo
+banner photo is courtesy of Jollyboys.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Update</name>
     <message>
-        <source>Current step: %1</source>
+        <source>Update failed.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

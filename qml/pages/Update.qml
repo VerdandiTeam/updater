@@ -1,35 +1,46 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import org.nemomobile.systemsettings 1.0
+import Nemo.KeepAlive 1.2
 
 Page {
     id: page
 
-    backNavigation: false
+    KeepAlive {
+        enabled: true
+    }
+
+    DisplayBlanking {
+        preventBlanking: true
+    }
+
+    backNavigation: updateFailed
     allowedOrientations: Orientation.All
+
+    property bool updateFailed: false
 
     Connections {
         id: coreConnections
         target: core
 
         onSsuFailed: {
-             page.backgroundColor = "cyan"
+            page.updateFailed = true
         }
 
         onZypperCleanFailed: {
-            page.backgroundColor = "cyan"
+            page.updateFailed = true
         }
 
         onZypperRefreshFailed: {
-             page.backgroundColor = "cyan"
+            page.updateFailed = true
         }
 
         onUpgradeFailed: {
-             page.backgroundColor = "cyan"
+            page.updateFailed = true
         }
 
-        onUpgradeFinished: {
-             page.backgroundColor = "cyan"
+        onProgressOutputChanged: {
+            progressOutput.focus = true
         }
     }
 
@@ -88,12 +99,32 @@ Page {
             spacing: Theme.paddingLarge
 
             Label {
-                text: qsTr("Current step: %1").arg(core.currentStep)
+                id: currentStepLabel
+                text: page.updateFailed ? qsTr("Update failed.") : core.currentStep
+                font.pointSize: Theme.fontSizeExtraLarge
+                font.bold: true
+                color: page.updateFailed ? "red" : Theme.primaryColor
+            }
+
+            ProgressBar {
+                id: progress
+                width: parent.width
+                value: core.progress
+                minimumValue: 0
+                maximumValue: 100
+                valueText: value + " %"
             }
 
             TextArea {
-                height: page.height/2
+                id: progressOutput
+                height: page.height - banner.height - currentStepLabel.height - progress.height - Theme.paddingLarge*4
+                width: page.width - Theme.horizontalPageMargin*2
                 text: core.progressOutput
+                color: Theme.primaryColor
+                cursorPosition: length-1
+                readOnly: true
+                focus: true
+                onFocusChanged: forceActiveFocus()
             }
         }
     }
