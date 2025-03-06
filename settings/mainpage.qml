@@ -46,7 +46,7 @@ Page {
             }
         }
 
-        doc.open("GET", "http://verdanditeam.com/api/device/" + deviceInfo.model)
+        doc.open("GET", "https://verdanditeam.com/api/device/" + deviceInfo.model)
         doc.send()
     }
 
