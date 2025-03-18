@@ -76,6 +76,11 @@ Page {
             anchors.right: parent.right
             height: 0.2*Screen.height
             fillMode: Image.PreserveAspectCrop
+            onStatusChanged: {
+                 if (status == Image.Error) {
+                    source = "/usr/share/os-update-service/graphics/Sailfish-OS-update-promo.jpg"
+                 }
+           }
         }
 
         Rectangle {
